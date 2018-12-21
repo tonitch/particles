@@ -9,8 +9,8 @@ class App(Frame):
         self.mainloop()
 
     def main(self):
-        self.Wscreen = 1920 # self.master.winfo_screenwidth()
-        self.Hscreen = 1080 # self.master.winfo_screenheight()
+        self.Wscreen = self.master.winfo_screenwidth()
+        self.Hscreen = self.master.winfo_screenheight()
         self.master.title("Particules")
 
         canvas = Canvas(self.master, width=self.Wscreen, height=self.Hscreen)
@@ -22,7 +22,7 @@ class App(Frame):
         self.master.update()
         canvas.Wscreen = self.Wscreen
         canvas.Hscreen = self.Hscreen
-        self.nbrPart = 500
+        self.nbrPart = 250
 
         canvas.particles = []
 
@@ -52,21 +52,21 @@ class Particle():
             self.x = random.randint(0, self.canvas.winfo_width())
             self.y = self.canvas.winfo_height() + random.randint(10,100)
             self.xspeed = random.uniform(-1,1)
-            self.yspeed = -random.uniform(0.5,2)
+            self.yspeed = -random.uniform(0.5,3)
         elif self.screenFace == 1:  # right
             self.x = self.canvas.winfo_width() + random.randint(10,100)
             self.y = random.randint(0, self.canvas.winfo_height())
-            self.xspeed = -random.uniform(0.5,2)
+            self.xspeed = -random.uniform(0.5,3)
             self.yspeed = random.uniform(-1,1)
         elif self.screenFace == 2:  # bottom
             self.x = random.randint(0, self.canvas.winfo_width())
             self.y = -random.randint(10,100)
             self.xspeed = random.uniform(-1,1)
-            self.yspeed = random.uniform(0.5,2)
+            self.yspeed = random.uniform(0.5,3)
         elif self.screenFace == 3:  # left
             self.x = -random.randint(10,100)
             self.y = random.randint(0, self.canvas.winfo_height())
-            self.xspeed = random.uniform(0.5,2)
+            self.xspeed = random.uniform(0.5,3)
             self.yspeed = random.uniform(-1,1)
 
     def update(self):
